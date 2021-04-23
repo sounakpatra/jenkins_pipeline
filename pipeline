@@ -10,6 +10,7 @@ pipeline {
                 ls -la
                 python3 -V
                 touch /home/jenkins/my_app/test.py
+                cat /etc/os-release
                 '''
             }
         }
