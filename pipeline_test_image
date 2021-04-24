@@ -12,7 +12,7 @@ pipeline {
         stage('Environment Check') {
             steps {
                 sh '''
-                python -V
+                python3 -V
                 cat /etc/os-release
                 ls -la /home/jenkins/my_app/
                 '''
