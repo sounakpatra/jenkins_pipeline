@@ -3,7 +3,7 @@ pipeline {
         dockerfile true
     }
     stages {
-        stage(Environment Check'') {
+        stage('Environment Check') {
             steps {
                 sh '''
                 pwd
