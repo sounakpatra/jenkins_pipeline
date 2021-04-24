@@ -1,7 +1,4 @@
 pipeline {
-    environment {
-        dockerImage = ""
-    }
     agent any
     stages {
         stage('Building Image') {
