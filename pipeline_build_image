@@ -1,4 +1,7 @@
 pipeline {
+    environment {
+        registryCredential = 'github'
+    }
     agent any
     stages {
         stage('Building Image') {
@@ -6,6 +9,20 @@ pipeline {
                 script {
                     dockerImage = docker.build registry
                 }					
+            }
+        }
+        stage('Deploy Image') {
+            steps {
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
+                    }
+                }
+            }
+        }
+        stage('Remove Image') {
+            steps {
+                sh 'docker rm $registry'
             }
         }
     }
