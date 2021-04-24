@@ -1,0 +1,15 @@
+pipeline {
+    environment {
+        docker_registry = 'sounakpatra/jenkins_test'
+        docker_credential = 'github'
+        dockerImage = ''
+    }
+    agent master
+    stages {
+        stage('Building Image') {
+            steps {
+                dockerImage = docker.build registry + ':$BUILD_NUMBER' 
+            }
+        }
+    }
+}
