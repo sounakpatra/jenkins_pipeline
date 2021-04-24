@@ -17,3 +17,4 @@ RUN chown jenkins:jenkins "${JENKINS_HOME}"
 USER jenkins
 RUN mkdir /home/jenkins/my_app
 ADD set_up.py /home/jenkins/my_app/
+VOLUME /home/jenkins/my_app/
