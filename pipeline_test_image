@@ -27,9 +27,4 @@ pipeline {
             }
         }
     }
-    post {
-        success {
-            build job: 'pipeline_docker_project_3', parameters: [(string(name: 'image', value: imagename))]
-        }
-    }
 }
