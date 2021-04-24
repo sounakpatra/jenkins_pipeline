@@ -16,7 +16,7 @@ pipeline {
     }
     post {
 	    success {
-            build job: 'pipeline_docker_project_2'
+            build job: 'pipeline_docker_project_2', parameters: [string(name: 'imagename', value: '$registry:$BUILD_NUMBER')]
         }
     }
 }
