@@ -1,0 +1,30 @@
+pipeline {
+    parameters {
+        string(name: 'imagename', defaultValue: '')
+    }
+    agent {
+        docker {
+            image imagename
+        }
+    }
+
+    stages {
+        stage('Environment Check') {
+            steps {
+                sh '''
+                python -V
+                cat /etc/os-release
+                ls -la /home/jenkins/my_app/
+                '''
+            }
+        }
+        stage('Build') {
+            steps {
+                sh '''
+                cd /home/jenkins/my_app/
+                python3 set_up.py
+                '''
+            }
+        }
+    }
+}
