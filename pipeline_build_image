@@ -4,7 +4,7 @@ pipeline {
         docker_credential = 'github'
         dockerImage = ''
     }
-    agent master
+    agent any
     stages {
         stage('Building Image') {
             steps {
