@@ -1,15 +1,15 @@
 pipeline {
     environment {
-        docker_registry = 'sounakpatra/jenkins_test'
-        docker_credential = 'github'
-        dockerImage = ''
+        registry = "sounakpatra/jenkins_test"
+        registryCredential = 'github'
+        dockerImage = ""
     }
     agent any
     stages {
         stage('Building Image') {
             steps {
                 script {
-                    dockerImage = docker.build registry + ':$BUILD_NUMBER'
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }					
             }
         }
