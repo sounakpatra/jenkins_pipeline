@@ -12,8 +12,9 @@ pipeline {
                 touch /home/jenkins/my_app/test.py
                 cat /etc/os-release
                 ls -la /home/jenkins/my_app/
+                python3 /home/jenkins/my_app/set_up.py
                 '''
             }
         }
-    }   
+    }
 }
