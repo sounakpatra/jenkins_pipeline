@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Remove Image') {
             steps {
-                sh 'docker rm $registry'
+                sh 'docker image rm $registry'
             }
         }
     }
