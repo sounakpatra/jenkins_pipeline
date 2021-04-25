@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages {
+        stage('Git') {
+            steps {
+                git branch: 'main',
+                    credentialsId: 'github',
+                    url: 'https://github.com/sounakpatra/jenkins_pipeline.git'
+            }
+        }
+    }
+}
