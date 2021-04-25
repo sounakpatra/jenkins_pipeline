@@ -27,6 +27,7 @@ pipeline {
             agent {
                 docker {
                     image imagename
+                    args '-v /var/lib/jenkins/jenkins_mount:/home/jenkins/my_app/'
                 }
             }
             stages {
