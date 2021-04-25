@@ -1,0 +1,45 @@
+pipeline {
+    environment {
+        registryCredential = 'dockerhub'
+        dockerImage = ""
+    }
+    parameters {
+        string(name: 'imagename', defaultValue: '')
+    }
+    agent any
+    stages{
+        stage('Check Host System Environment') {
+            steps{
+                sh '''
+                python3 -V
+                cat /etc/os-release
+                '''
+            }
+        }
+        stage ('Build Image'){
+            steps{
+                script {
+                    dockerImage = docker.build imagename
+                }
+            }
+        }
+        stage('Build Inside Container') {
+            agent {
+                docker {
+                    image imagename
+                }
+            }
+            stages {
+                stage('Inside Docker') {
+                    steps {
+                        sh '''
+                        python3 -V
+                        cat /etc/os-release
+                        ls -la /home/jenkins/my_app/
+                        '''
+                    }
+                }
+            }
+        }
+    }
+}
