@@ -20,11 +20,6 @@ pipeline {
                 }
             }
         }
-        stage('Remove Image') {
-            steps {
-                sh 'docker image rm $registry'
-            }
-        }
     }
     post {
         success {
