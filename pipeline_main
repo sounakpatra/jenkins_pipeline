@@ -30,12 +30,20 @@ pipeline {
                 }
             }
             stages {
-                stage('Inside Docker') {
+                stage('Check Container Environment') {
                     steps {
                         sh '''
                         python3 -V
                         cat /etc/os-release
                         ls -la /home/jenkins/my_app/
+                        '''
+                    }
+                }
+                stage('Build') {
+                    steps {
+                        sh '''
+                        cd /home/jenkins/my_app/
+                        python3 set_up.py
                         '''
                     }
                 }
