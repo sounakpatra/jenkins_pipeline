@@ -1,0 +1,14 @@
+---
+services:
+  databases:
+    image: postgres
+    volumes:
+      - /home/sounak/docker_compose/pgdata:/var/lib/postgres
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      - POSTGRES_DB=demodb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+...
